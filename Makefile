@@ -8,3 +8,6 @@ brain-games: # Запуск игры
 
 publish: # Публикация на npm
 	npm publish --dry-run
+
+lint: # Проверка на ошибки
+	npx eslint . --fix
