@@ -6,5 +6,8 @@
 
 [![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=subbotaMan_frontend-project-44)](https://sonarcloud.io/summary/new_code?id=subbotaMan_frontend-project-44)
 
+## Brain-even
+https://asciinema.org/a/lOGBfRpHmx5IWy4JCC9REsIxC 
 
-https://asciinema.org/a/lOGBfRpHmx5IWy4JCC9REsIxC
+## Brain-calc
+https://asciinema.org/a/cfueuRQZP3GqCgERHdKnWSEJ0

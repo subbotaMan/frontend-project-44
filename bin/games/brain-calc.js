@@ -1,8 +1,10 @@
 #!/usr/bin/env node 
 /* eslint-disable */
 import readlineSync from "readline-sync";
+import welcome from "../../src/cli.js";
+import { congratulations, randomNumberOne, randomNumberSecond } from "../../src/cli.js";
 
-const calc = () => {
+const brainCalc = () => {
     const operators = ['+', '-', '*'];
     const operations = {
         '+': (a, b) => a + b,
@@ -10,20 +12,18 @@ const calc = () => {
         '*': (a, b) => a * b,
       };
 
-      console.log("Welcome to the Brain Games!");
-      const name = readlineSync.question("May I have your name? ");
-      console.log(`Hello, ${name}!`);
-      console.log("What is the result of the expression?");
+      const name = welcome("What is the result of the expression?");
 
       let countWin = 0;
 
       for (let i = 0; i <= 2; i++) {   
-        const randomNumberOne = Math.ceil(Math.random() * 100);
-        const randomNumberSecond = Math.ceil(Math.random() * 100);
-        const randomOperator = operators[Math.floor(Math.random() * operators.length)];
-        const result = operations[randomOperator](randomNumberOne, randomNumberSecond);
+        let num1 = randomNumberOne();
+        let num2 = randomNumberSecond();
 
-        console.log(`Question: ${randomNumberOne} ${randomOperator} ${randomNumberSecond}`);
+        const randomOperator = operators[Math.floor(Math.random() * operators.length)];
+        const result = operations[randomOperator](num1, num2);
+
+        console.log(`Question: ${num1} ${randomOperator} ${num2}`);
         const answer = readlineSync.question("Your answer: ");
 
         if (Number(answer) === Number(result)) {
@@ -37,11 +37,11 @@ const calc = () => {
         }
 
         if (countWin === 3) {
-            console.log(`Congratulations, ${name}!`);
+            congratulations(name)
           }
       }
 }
 
-export default calc;
+export default brainCalc;
 
-calc();
+brainCalc();
