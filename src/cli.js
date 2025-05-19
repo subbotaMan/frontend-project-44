@@ -6,22 +6,26 @@ const welcome = (task) => {
   console.log(`Hello, ${name}!`);
   if (!task) {
     null;
-  } 
-  else {
+  } else {
     console.log(task);
-  } 
-  
+  }
+
   return name;
 };
 
-export const congratulations = name => console.log(`Congratulations, ${name}!`);
+export const congratulations = (name) =>
+  console.log(`Congratulations, ${name}!`);
+
+export const answer = () => {
+  return readlineSync.question("Your answer: ");
+};
 
 export const randomNumberOne = () => {
-  return Math.ceil(Math.random() * 100);
-}
+  return Math.floor(Math.random() * 99);
+};
 
 export const randomNumberSecond = () => {
-  return Math.ceil(Math.random() * 100);
-}
+  return Math.floor(Math.random() * 100);
+};
 
 export default welcome;
