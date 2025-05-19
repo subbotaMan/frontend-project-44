@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable */
+
 import readlineSync from "readline-sync";
 import welcome from "../../src/cli.js";
 
@@ -22,8 +22,9 @@ const generateProgression = () => {
 };
 
 const brainProgression = () => {
-  const name = welcome("Find the greatest common divisor of given numbers.");
+  const name = welcome("What number is missing in the progression?");
   let countWin = 0;
+  const maxCountValue = 3;
 
   for (let i = 0; i <= 2; i++) {
     const { arithmeticProgression, result } = generateProgression();
@@ -34,15 +35,14 @@ const brainProgression = () => {
     if (Number(answer) === Number(result)) {
       console.log("Correct!");
       countWin++;
-    } else {
-      console.log(`Your answer: ${answer} 
-                ${answer} is wrong answer ;(. Correct answer was ${result}. 
-                Let's try again, ${name}`);
+    } 
+    else {
+      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}. Let's try again, ${name}!`);
       break;
     }
   }
 
-  if (countWin === 3) {
+  if (countWin === maxCountValue) {
     console.log(`Congratulations, ${name}!`);
   }
 };

@@ -5,7 +5,7 @@ const welcome = (task) => {
   const name = readlineSync.question("May I have your name? ");
   console.log(`Hello, ${name}!`);
   if (!task) {
-    null;
+    return;
   }
   else {
     console.log(task);
