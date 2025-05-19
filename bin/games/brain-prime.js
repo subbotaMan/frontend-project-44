@@ -5,7 +5,7 @@ import welcome from "../../src/cli.js";
 import { simpleNum } from "../../src/cli.js";
 
 const brainPrime = () => {
-  const name = welcome("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+  const name = welcome('Answer "yes" if given number is prime. Otherwise answer "no".');
   const arrNum = [];
   let countWin = 0;
   const maxCountValue = 3;
