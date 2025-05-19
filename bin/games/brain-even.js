@@ -3,7 +3,7 @@ import readlineSync from "readline-sync";
 import welcome, { congratulations, randomNumberOne } from "../../src/cli.js";
 
 const brainEven = () => {
-  const name = welcome("Answer 'yes' if the number is even, otherwise answer 'no'.");
+  const name = welcome('Answer "yes" if the number is even, otherwise answer "no".');
 
   let countWin = 0;
   const maxCountValue = 3;
