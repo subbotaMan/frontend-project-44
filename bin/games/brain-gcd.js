@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable */
+
 import readlineSync from "readline-sync";
 import welcome from "../../src/cli.js";
 import {
@@ -33,9 +33,10 @@ const brainGcd = () => {
     if (Number(answer) === Number(result)) {
       console.log("Correct");
       countWin += 1;
-    } else {
+    }
+    else {
       console.log(
-        `${answer} is wrong answer ;(. Correct answer was ${result}. Let's try again, ${name}`
+        `${answer} is wrong answer ;(. Correct answer was ${result}. Let's try again, ${name}`,
       );
       break;
     }
