@@ -4,7 +4,7 @@
 
 ### SonarQube Badges
 
-[![Quality gate](https://sonarcloud.io/summary/new_code?id=subbotaMan_frontend-project-44)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=subbotaMan_frontend-project-44)](https://sonarcloud.io/summary/new_code?id=subbotaMan_frontend-project-44)
 
 ## Brain-even
 

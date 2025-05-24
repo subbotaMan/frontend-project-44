@@ -1,12 +1,10 @@
 #!/usr/bin/env node
-
 import readlineSync from 'readline-sync'
-import welcome from '../../src/cli.js'
+import welcome from '../cli.js'
 import {
   congratulations,
-  randomNumberOne,
-  randomNumberSecond,
-} from '../../src/cli.js'
+  randomNumber,
+} from '../data.js'
 
 const brainCalc = () => {
   const operators = ['+', '-', '*']
@@ -20,10 +18,11 @@ const brainCalc = () => {
 
   let countWin = 0
   const maxCountValue = 3
+  const maxStepGame = 2
 
-  for (let i = 0; i <= 2; i++) {
-    const num1 = randomNumberOne()
-    const num2 = randomNumberSecond()
+  for (let i = 0; i <= maxStepGame; i++) {
+    const num1 = randomNumber(99)
+    const num2 = randomNumber(99)
 
     const randomOperator = operators[Math.floor(Math.random() * operators.length)]
     const result = operations[randomOperator](num1, num2)
@@ -47,5 +46,3 @@ const brainCalc = () => {
 }
 
 export default brainCalc
-
-brainCalc()

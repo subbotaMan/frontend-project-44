@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync'
-import welcome, {
+import welcome from '../../src/cli.js'
+import {
   congratulations,
-  randomNumberOne,
-  randomNumberSecond,
-} from '../../src/cli.js'
+  randomNumber,
+} from '../../src/data.js'
 
 const gcd = (a, b) => {
   while (b !== 0) {
@@ -19,10 +19,11 @@ const brainGcd = () => {
   const name = welcome('Find the greatest common divisor of given numbers.')
   let countWin = 0
   const maxCountValue = 3
+  const maxStepGame = 2
 
-  for (let i = 0; i <= 2; i++) {
-    const num1 = randomNumberOne()
-    const num2 = randomNumberSecond()
+  for (let i = 0; i <= maxStepGame; i++) {
+    const num1 = randomNumber(99)
+    const num2 = randomNumber(99)
 
     console.log(`Question: ${num1} ${num2}`)
 
@@ -45,5 +46,3 @@ const brainGcd = () => {
 }
 
 export default brainGcd
-
-brainGcd()

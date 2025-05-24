@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import readlineSync from 'readline-sync'
 import welcome from '../../src/cli.js'
 
@@ -25,8 +24,9 @@ const brainProgression = () => {
   const name = welcome('What number is missing in the progression?')
   let countWin = 0
   const maxCountValue = 3
+  const maxStepGame = 2
 
-  for (let i = 0; i <= 2; i++) {
+  for (let i = 0; i <= maxStepGame; i++) {
     const { arithmeticProgression, result } = generateProgression()
     console.log(`Question: ${arithmeticProgression}`)
 
@@ -47,4 +47,4 @@ const brainProgression = () => {
   }
 }
 
-brainProgression()
+export default brainProgression
