@@ -1,5 +1,9 @@
 import readlineSync from 'readline-sync'
 
+export const maxCountValue = 3
+export const maxStepGame = 2
+export const correctAnswer = 'Correct!'
+
 const welcome = (task) => {
   console.log('Welcome to the Brain Games!')
   const name = readlineSync.question('May I have your name? ')
@@ -10,34 +14,31 @@ const welcome = (task) => {
   else {
     console.log(task)
   }
-
   return name
 }
 
-export const congratulations = name =>
-  console.log(`Congratulations, ${name}!`)
-
-export const answer = () => {
-  return readlineSync.question('Your answer: ')
-}
-
-// export const randomNumberOne = () => {
-// return Math.floor(Math.random() * 99)
-// }
+export const congratulations = name => `Congratulations, ${name}!`
 
 export const randomNumber = (factor) => {
   return Math.floor(Math.random() * factor)
 }
 
-// export const randomNumberSecond = () => {
-// return Math.floor(Math.random() * 100)
-// }
+export const stopGame = (countWin, maxCountValue, name) => {
+  if (countWin === maxCountValue) {
+    console.log(congratulations(name))
+  }
+}
 
-export const simpleNum = [
-  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
-  73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151,
-  157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233,
-  239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293,
-]
+export const question = (...randomNum) => {
+  if (randomNum.length > 1) {
+    const question = randomNum.join(' ')
+    console.log(`Question: ${question}`)
+  }
+  else console.log(`Question: ${randomNum}`)
+}
+
+export const userAnswer = () => {
+  return readlineSync.question('Your answer: ').toLowerCase().trim()
+}
 
 export default welcome

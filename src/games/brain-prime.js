@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync'
-import welcome from '../cli.js'
-import { randomNumber } from '../data.js'
+import welcome, { randomNumber, maxCountValue, maxStepGame, stopGame, question, userAnswer, correctAnswer } from '../cli.js'
 
 const simpleCheck = (n) => {
   if (n <= 1 || n % 2 === 0) return false
@@ -18,22 +16,20 @@ const simpleCheck = (n) => {
 const brainPrime = () => {
   const name = welcome('Answer "yes" if given number is prime. Otherwise answer "no".')
   let countWin = 0
-  const maxCountValue = 3
-  const maxStepGame = 2
 
   for (let i = 0; i <= maxStepGame; i++) {
     const randomNum = randomNumber(99)
     const trueValue = simpleCheck(randomNum)
 
-    console.log(`Question: ${randomNum}`)
-    const answer = readlineSync.question('Your answer: ')
+    question(randomNum)
+    const answer = userAnswer()
 
     if (trueValue && answer === 'yes'.toLowerCase().trim()) {
-      console.log('Correct!')
+      console.log(correctAnswer)
       countWin++
     }
     else if (!trueValue && answer === 'no'.toLowerCase().trim()) {
-      console.log('Correct!')
+      console.log(correctAnswer)
       countWin++
     }
     else if (trueValue && answer === 'no'.toLowerCase().trim()) {
@@ -45,9 +41,8 @@ const brainPrime = () => {
       break
     }
   }
-  if (countWin === maxCountValue) {
-    console.log(`Congratulations, ${name}!`)
-  }
+
+  stopGame(countWin, maxCountValue, name)
 }
 
 export default brainPrime

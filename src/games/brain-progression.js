@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync'
-import welcome from '../../src/cli.js'
+import welcome, { maxCountValue, maxStepGame, stopGame, question, userAnswer, correctAnswer } from '../cli.js'
 
 const generateProgression = () => {
   const progression = []
@@ -23,17 +22,15 @@ const generateProgression = () => {
 const brainProgression = () => {
   const name = welcome('What number is missing in the progression?')
   let countWin = 0
-  const maxCountValue = 3
-  const maxStepGame = 2
 
   for (let i = 0; i <= maxStepGame; i++) {
     const { arithmeticProgression, result } = generateProgression()
-    console.log(`Question: ${arithmeticProgression}`)
+    question(arithmeticProgression)
 
-    const answer = readlineSync.question('Your answer: ')
+    const answer = userAnswer()
 
     if (Number(answer) === Number(result)) {
-      console.log('Correct!')
+      console.log(correctAnswer)
       countWin++
     }
     else {
@@ -41,10 +38,7 @@ const brainProgression = () => {
       break
     }
   }
-
-  if (countWin === maxCountValue) {
-    console.log(`Congratulations, ${name}!`)
-  }
+  stopGame(countWin, maxCountValue, name)
 }
 
 export default brainProgression

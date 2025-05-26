@@ -1,10 +1,5 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync'
-import welcome from '../cli.js'
-import {
-  congratulations,
-  randomNumber,
-} from '../data.js'
+import welcome, { randomNumber, maxCountValue, maxStepGame, stopGame, question, userAnswer, correctAnswer } from '../cli.js'
 
 const brainCalc = () => {
   const operators = ['+', '-', '*']
@@ -15,10 +10,7 @@ const brainCalc = () => {
   }
 
   const name = welcome('What is the result of the expression?')
-
   let countWin = 0
-  const maxCountValue = 3
-  const maxStepGame = 2
 
   for (let i = 0; i <= maxStepGame; i++) {
     const num1 = randomNumber(99)
@@ -27,11 +19,12 @@ const brainCalc = () => {
     const randomOperator = operators[Math.floor(Math.random() * operators.length)]
     const result = operations[randomOperator](num1, num2)
 
-    console.log(`Question: ${num1} ${randomOperator} ${num2}`)
-    const answer = readlineSync.question('Your answer: ')
+    question(num1, randomOperator, num2)
+
+    const answer = userAnswer()
 
     if (Number(answer) === Number(result)) {
-      console.log('Correct!')
+      console.log(correctAnswer)
       countWin += 1
     }
     else {
@@ -39,9 +32,7 @@ const brainCalc = () => {
       break
     }
 
-    if (countWin === maxCountValue) {
-      congratulations(name)
-    }
+    stopGame(countWin, maxCountValue, name)
   }
 }
 
