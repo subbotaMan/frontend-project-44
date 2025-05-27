@@ -2,7 +2,6 @@ import welcome, { maxCountValue, maxStepGame, correctAnswer, question, userAnswe
 
 const runEngine = (gameDescription, generateRound) => {
   const name = welcome(gameDescription)
-  let countWin = 0
 
   for (let i = 0; i <= maxStepGame; i++) {
     const [questionText, correctAnswerText] = generateRound()
@@ -12,7 +11,6 @@ const runEngine = (gameDescription, generateRound) => {
 
     if (answer === correctAnswerText.toString()) {
       console.log(correctAnswer)
-      countWin += 1
     }
     else {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswerText}'.`)
@@ -21,7 +19,7 @@ const runEngine = (gameDescription, generateRound) => {
     }
   }
 
-  stopGame(countWin, maxCountValue, name)
+  stopGame(maxStepGame, maxCountValue, name)
 }
 
 export default runEngine

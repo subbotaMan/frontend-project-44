@@ -23,8 +23,8 @@ export const randomNumber = (factor) => {
   return Math.floor(Math.random() * factor)
 }
 
-export const stopGame = (countWin, maxCountValue, name) => {
-  if (countWin === maxCountValue) {
+export const stopGame = (maxStepGame, maxCountValue, name) => {
+  if (maxStepGame === maxCountValue) {
     console.log(congratulations(name))
   }
 }
