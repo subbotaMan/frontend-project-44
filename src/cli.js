@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync'
 
-export const maxCountValue = 3
+export const maxCountValue = 2
 export const maxStepGame = 2
 export const correctAnswer = 'Correct!'
 
