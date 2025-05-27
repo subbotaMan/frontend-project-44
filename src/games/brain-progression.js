@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import welcome, { maxCountValue, maxStepGame, stopGame, question, userAnswer, correctAnswer } from '../cli.js'
+import runEngine from '../core.js'
+import { randomNumber } from '../cli.js'
 
 const generateProgression = () => {
   const progression = []
   const length = 5 + Math.floor(Math.random() * 5)
-  const firstNumber = Math.floor(Math.random() * 50)
+  const firstNumber = randomNumber(50)
   const step = 2 + Math.floor(Math.random() * 6)
 
   for (let i = 0; i <= length; i++) {
@@ -12,33 +13,13 @@ const generateProgression = () => {
   }
 
   const hiddenIndex = Math.floor(Math.random() * length)
-  const result = progression[hiddenIndex]
+  const correctAnswer = progression[hiddenIndex].toString()
   progression[hiddenIndex] = '..'
-  const arithmeticProgression = progression.join(' ')
+  const questionText = progression.join(' ')
 
-  return { arithmeticProgression, result }
+  return [questionText, correctAnswer]
 }
 
-const brainProgression = () => {
-  const name = welcome('What number is missing in the progression?')
-  let countWin = 0
+const description = 'What number is missing in the progression?'
 
-  for (let i = 0; i <= maxStepGame; i++) {
-    const { arithmeticProgression, result } = generateProgression()
-    question(arithmeticProgression)
-
-    const answer = userAnswer()
-
-    if (Number(answer) === Number(result)) {
-      console.log(correctAnswer)
-      countWin++
-    }
-    else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}. Let's try again, ${name}!`)
-      break
-    }
-  }
-  stopGame(countWin, maxCountValue, name)
-}
-
-export default brainProgression
+runEngine(description, generateProgression)

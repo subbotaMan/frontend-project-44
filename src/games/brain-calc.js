@@ -1,39 +1,23 @@
 #!/usr/bin/env node
-import welcome, { randomNumber, maxCountValue, maxStepGame, stopGame, question, userAnswer, correctAnswer } from '../cli.js'
+import runEngine from '../core.js'
+import { randomNumber } from '../cli.js'
 
-const brainCalc = () => {
-  const operators = ['+', '-', '*']
-  const operations = {
-    '+': (a, b) => a + b,
-    '-': (a, b) => a - b,
-    '*': (a, b) => a * b,
-  }
-
-  const name = welcome('What is the result of the expression?')
-  let countWin = 0
-
-  for (let i = 0; i <= maxStepGame; i++) {
-    const num1 = randomNumber(99)
-    const num2 = randomNumber(99)
-
-    const randomOperator = operators[Math.floor(Math.random() * operators.length)]
-    const result = operations[randomOperator](num1, num2)
-
-    question(num1, randomOperator, num2)
-
-    const answer = userAnswer()
-
-    if (Number(answer) === Number(result)) {
-      console.log(correctAnswer)
-      countWin += 1
-    }
-    else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${result}. Let's try again, ${name}!`)
-      break
-    }
-
-    stopGame(countWin, maxCountValue, name)
-  }
+const operators = ['+', '-', '*']
+const operations = {
+  '+': (a, b) => a + b,
+  '-': (a, b) => a - b,
+  '*': (a, b) => a * b,
 }
 
-export default brainCalc
+const generateRound = () => {
+  const num1 = randomNumber(99)
+  const num2 = randomNumber(99)
+  const operator = operators[Math.floor(Math.random() * operators.length)]
+  const questionText = `${num1} ${operator} ${num2}`
+  const correctAnswer = operations[operator](num1, num2).toString()
+  return [questionText, correctAnswer]
+}
+
+const description = 'What is the result of the expression?'
+
+runEngine(description, generateRound)
