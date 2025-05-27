@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/subbotaMan/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/subbotaMan/frontend-project-44/actions)",
   "bin": {
-    "brain-games": "bin/brain-games.js",
-    "brain-even": "bin/brain-even.js",
-    "brain-calc": "bin/brain-calc.js",
-    "brain-gcd": "bin/brain-gcd.js",
-    "brain-progression": "bin/brain-progression.js",
-    "brain-prime": "bin/brain-prime.js"
+    "brain-games": "src/games/brain-games.js",
+    "brain-even": "src/games/brain-even.js",
+    "brain-calc": "src/games/brain-calc.js",
+    "brain-gcd": "src/games/brain-gcd.js",
+    "brain-progression": "src/games/brain-progression.js",
+    "brain-prime": "src/games/brain-prime.js"
   },
   "main": "index.js",
   "scripts": {
